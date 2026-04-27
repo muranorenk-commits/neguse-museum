@@ -12,10 +12,29 @@ export interface DiagnosisScores {
 
 // 診断結果全体
 export interface DiagnosisResult {
-  totalScore: number      // 総合芸術点
-  title: string           // 作品タイトル
-  review: string          // 評論文
+  totalScore: number
+  title: string
+  review: string
   scores: DiagnosisScores
-  todayMessage: string    // 今日の一言
-  shareText: string       // SNSシェア用テキスト
+  todayMessage: string
+  shareText: string
+}
+
+// Firestore に保存する投稿データ
+export interface Post {
+  id: string
+  userId: string
+  userName: string
+  userPhotoURL: string
+  imageURL: string        // Firebase Storage の URL
+  result: DiagnosisResult
+  createdAt: number       // タイムスタンプ (ms)
+}
+
+// ユーザープロフィール
+export interface UserProfile {
+  uid: string
+  displayName: string
+  photoURL: string
+  friendIds: string[]     // 友達の uid リスト
 }
